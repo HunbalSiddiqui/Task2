@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {withRouter} from 'react-router-dom'
+import { fetchResult } from '../AdminAPICalls/AdminAPICalls';
+import { piecesBottles, priceBottles } from '../Util';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +28,12 @@ function LayoutTextFields(props) {
   }
 
   const navigate = () =>{
-      console.log(inputValue)
+      const reqObj = {
+          'requiredBottles' : inputValue,
+          'price' : priceBottles,
+          'pieces' : piecesBottles
+      }
+      fetchResult(reqObj)
       props.history.push('/Output')
   }
   return (
