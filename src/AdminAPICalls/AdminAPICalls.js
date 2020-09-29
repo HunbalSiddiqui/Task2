@@ -1,25 +1,21 @@
-const { API } = require("../backend");
+import { API } from "../backend"
 
 export const fetchResult = (reqObj) =>{
-    console.log(reqObj)
 
-    //TODO: API CALL
-
-    // return fetch(`${API}/category/create/${userId}`,
+    return fetch(`${API}`,
     // header info
-    // {
-    //     method : "POST",
-    //     headers :{
-    //     Accept:"Application/json",
-    //     "Content-Type":"application/json",
-    //     Authorization : `Bearer ${token}`//bearer toekn
-    //     },
-    //     body: JSON.stringify(category)
-    // })
-    // .then(res=>{
-    //     return res.json()
-    // })
-    // .catch(err=>{
-    //     return err
-    // })
+    {
+        method : "POST",
+        headers :{
+        Accept:"Application/json",
+        "Content-Type":"application/json",
+        },
+        body: JSON.stringify(reqObj)
+    })
+    .then(res=>{
+        return res.json()
+    })
+    .catch(err=>{
+        return err
+    })
 }
